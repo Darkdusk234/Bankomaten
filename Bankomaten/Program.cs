@@ -26,7 +26,7 @@
             do
             {
                 userNameInput = Console.ReadLine();
-                if (userNameInput != null)
+                if (userNameInput != "")
                 {
                     for(int i = 0; i < userNames.Length; i++)
                     {
@@ -71,7 +71,7 @@
                 Write($"Du har {i} försök kvar.");
                 string userInput = Console.ReadLine();
 
-                if(userInput != null)
+                if(userInput != "")
                 {
                     if(userPins[index].Equals(userInput))
                     {
