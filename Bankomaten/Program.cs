@@ -46,6 +46,47 @@
             return userNameInput;
         }
 
+        static bool PinCodeInput(string user)
+        {
+            bool loginSuccess = false;
+            int index = 0;
+
+
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            do
+            {
+                string userInput = Console.ReadLine();
+
+                if(userInput != null)
+                {
+                    if(userPins[index].Equals(userInput))
+                    {
+                        loginSuccess = true;
+                    }
+                    else
+                    {
+                        Write("Din pin är incorrect. Försök igen.");
+                    }
+                }
+                else
+                {
+                    Write("Ogiltligt input. Försök igen.");
+                    continue;
+                }
+
+            } while (!loginSuccess);
+
+            return loginSuccess;
+        }
+
         /// <summary>
         /// Prints out a string of text in a rainbowlike pattern
         /// </summary>
