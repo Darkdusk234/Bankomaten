@@ -66,8 +66,9 @@
                 }
             }
 
-            do
+           for(int i = 3; i > 0; i--)
             {
+                Write($"Du har {i} försök kvar.");
                 string userInput = Console.ReadLine();
 
                 if(userInput != null)
@@ -75,10 +76,12 @@
                     if(userPins[index].Equals(userInput))
                     {
                         loginSuccess = true;
+                        break;
                     }
                     else
                     {
                         Write("Din pin är incorrect. Försök igen.");
+                        continue;
                     }
                 }
                 else
@@ -87,7 +90,12 @@
                     continue;
                 }
 
-            } while (!loginSuccess);
+            }
+
+           if(loginSuccess == false)
+            {
+                Write("Du skrev fel pinkod för många gånger. Vänligen starta om programmet.");
+            }
 
             return loginSuccess;
         }
