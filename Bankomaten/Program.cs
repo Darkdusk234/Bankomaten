@@ -2,9 +2,12 @@
 {
     internal class Program
     {
+        
         static void Main(string[] args)
         {
-            
+            Write("Välkommen till DRWHO Bank. \n" +
+                "Vänligen skriv ditt användarnamn.");          
+
         }
 
         /// <summary>
