@@ -7,20 +7,24 @@
 
         static void Main(string[] args)
         {
-            Write("Välkommen till DRWHO Bank. \n" +
-                "Vänligen skriv ditt användarnamn.");
-
-            string user = UserNameInput();
-
-            Write($"God dag {user}. \n" +
-                "Vänligen skriv in din pinkod för att logga in.");
-
-            bool loginSuccess = PinCodeInput(user);
-
-            if(loginSuccess)
+            bool active = true;
+            do
             {
-                UserInterface(user);
-            }
+                Write("Välkommen till DRWHO Bank. \n" +
+                    "Vänligen skriv ditt användarnamn.");
+
+                string user = UserNameInput();
+
+                Write($"God dag {user}. \n" +
+                    "Vänligen skriv in din pinkod för att logga in.");
+
+                bool loginSuccess = PinCodeInput(user);
+
+                if (loginSuccess)
+                {
+                    UserInterface(user);
+                }
+            } while (active);
         }
         
         static string UserNameInput()
