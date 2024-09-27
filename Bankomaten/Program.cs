@@ -142,6 +142,8 @@
                         logOut = true;
                         break;
                     default:
+                        Write("Ogiltigt val. Tryck enter för att gå tillbaka till menyn.");
+                        Console.ReadKey();
                         break;
                 }
 
