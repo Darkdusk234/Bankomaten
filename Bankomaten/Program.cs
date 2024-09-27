@@ -118,10 +118,16 @@
                 switch (userChoice)
                 {
                     case "1":
+                        Write("Klicka enter för att komma till huvudmenyn.");
+                        Console.ReadKey();
                         break;
                     case "2":
+                        Write("Klicka enter för att komma till huvudmenyn.");
+                        Console.ReadKey();
                         break;
                     case "3":
+                        Write("Klicka enter för att komma till huvudmenyn.");
+                        Console.ReadKey();
                         break;
                     case "4":
                         logOut = true;
@@ -130,8 +136,6 @@
                         break;
                 }
 
-                Write("Klicka enter för att komma till huvudmenyn.");
-                Console.ReadKey();
             } while (!logOut);
         }
 
