@@ -109,6 +109,22 @@
                 $"2.Överföring mellan konton.\n" +
                 $"3.Ta ut pengar.\n" +
                 $"4.Logga ut.");
+
+            string userChoice = Console.ReadLine();
+
+            switch(userChoice)
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
