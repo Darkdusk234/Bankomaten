@@ -15,7 +15,12 @@
             Write($"God dag {user}. \n" +
                 "Vänligen skriv in din pinkod för att logga in.");
 
-            bool loginSucess = PinCodeInput(user);
+            bool loginSuccess = PinCodeInput(user);
+
+            if(loginSuccess)
+            {
+                UserInterface(user);
+            }
         }
         
         static string UserNameInput()
