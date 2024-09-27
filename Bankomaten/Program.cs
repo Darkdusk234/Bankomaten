@@ -100,6 +100,17 @@
             return loginSuccess;
         }
 
+        static void UserInterface(string user)
+        {
+            Console.Clear();
+
+            Write($"Hej {user}. Vänligen välj vad du vill göra. \n" +
+                $"1.Se dina konton och saldo.\n" +
+                $"2.Överföring mellan konton.\n" +
+                $"3.Ta ut pengar.\n" +
+                $"4.Logga ut.");
+        }
+
         /// <summary>
         /// Prints out a string of text in a rainbowlike pattern
         /// </summary>
