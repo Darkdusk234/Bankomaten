@@ -102,29 +102,36 @@
 
         static void UserInterface(string user)
         {
-            Console.Clear();
-
-            Write($"Hej {user}. Vänligen välj vad du vill göra. \n" +
-                $"1.Se dina konton och saldo.\n" +
-                $"2.Överföring mellan konton.\n" +
-                $"3.Ta ut pengar.\n" +
-                $"4.Logga ut.");
-
-            string userChoice = Console.ReadLine();
-
-            switch(userChoice)
+            bool logOut = false;
+            do
             {
-                case "1":
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                case "4":
-                    break;
-                default:
-                    break;
-            }
+                Console.Clear();
+
+                Write($"Hej {user}. Vänligen välj vad du vill göra. \n" +
+                    $"1.Se dina konton och saldo.\n" +
+                    $"2.Överföring mellan konton.\n" +
+                    $"3.Ta ut pengar.\n" +
+                    $"4.Logga ut.");
+
+                string userChoice = Console.ReadLine();
+
+                switch (userChoice)
+                {
+                    case "1":
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    default:
+                        break;
+                }
+
+                Write("Klicka enter för att komma till huvudmenyn.");
+                Console.ReadKey();
+            } while (!logOut);
         }
 
         /// <summary>
