@@ -5,8 +5,17 @@
         static string[] userNames = ["Johan", "Lisa", "Anders", "Rebecca", "Busan"];
         static string[] userPins = ["943", "531", "231", "053", "111"];
 
+        static string[,] johanAccounts = { { "Sparkonto", }, { "73459,85" } };
+        static string[,] lisaAccounts = { { "Lönekonto", "Investeringskonto" }, { "79854,45", "1436893,75" } };
+        static string[,] andersAccounts = { { "Lönekonto", "Sparkonto", "Djurkonto" }, { "65325,21", "534987,68", "735531,21" } };
+        static string[,] rebeccaAccounts = { { "Lönekonto", "Investeringskonto", "Sparkonto", "Huskonto" }, { "68235,00", "1184633,86", "75000,00", "5341,76" } };
+        static string[,] busanAccounts = { { "Matkonto", "Uppmärksamhetskonto", "Klappkonto", "Revirkonto", "Sovkonto"  }, { "986351,34", "2381512,64", "631612,85", "561723,84", "1501372,51" } };
+
+        static string[][,] userAccounts = new string[5][,];
+
         static void Main(string[] args)
         {
+            userAccounts = [johanAccounts, lisaAccounts, andersAccounts, rebeccaAccounts, busanAccounts];
             bool active = true;
             do
             {
