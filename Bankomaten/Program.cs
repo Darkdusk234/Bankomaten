@@ -150,6 +150,11 @@
             } while (!logOut);
         }
 
+        static void AccountsMenu(string user)
+        {
+
+        }
+
         /// <summary>
         /// Prints out a string of text in a rainbowlike pattern
         /// </summary>
