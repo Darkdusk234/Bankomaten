@@ -1,4 +1,6 @@
-﻿namespace Bankomaten
+﻿using System;
+
+namespace Bankomaten
 {
     internal class Program
     {
@@ -161,7 +163,26 @@
 
         static void AccountsMenu(string user)
         {
+            int index = 0;
 
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            string[,] currentUserAccounts = userAccounts[index];
+
+            for(int i = 0; i < currentUserAccounts.GetLength(1); i++)
+            {
+                Write($"{i + 1}.{currentUserAccounts[0,i]     }");
+                Write($"{i + 1}.{currentUserAccounts[1,i]}kr");
+            }
+
+            Console.ReadKey();
         }
 
         /// <summary>
