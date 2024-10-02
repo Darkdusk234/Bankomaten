@@ -138,8 +138,7 @@ namespace Bankomaten
                 switch (userChoice)
                 {
                     case "1":
-                        Write("Klicka enter för att komma till huvudmenyn.");
-                        Console.ReadKey();
+                        AccountsMenu(user);
                         break;
                     case "2":
                         Write("Klicka enter för att komma till huvudmenyn.");
