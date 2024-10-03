@@ -305,9 +305,13 @@ namespace Bankomaten
 
             tempSum = double.Parse(currentUserAccounts[1, accountOutIndex]) - amount;
 
+            tempSum = Math.Truncate(tempSum * 100) / 100;
+
             currentUserAccounts[1, accountOutIndex] = tempSum.ToString();
 
             tempSum = double.Parse(currentUserAccounts[1, accountInIndex]) + amount;
+
+            tempSum = Math.Truncate(tempSum * 100) / 100; 
 
             currentUserAccounts[1, accountInIndex] = tempSum.ToString();
         }
