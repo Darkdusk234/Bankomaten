@@ -184,6 +184,11 @@ namespace Bankomaten
             Console.ReadKey();
         }
 
+        static void AccountMoneyTransfer(string user)
+        {
+
+        }
+
         /// <summary>
         /// Prints out a string of text in a rainbowlike pattern
         /// </summary>
