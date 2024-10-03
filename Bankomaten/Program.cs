@@ -218,6 +218,7 @@ namespace Bankomaten
                 if(accountOut - 1 < currentUserAccounts.GetLength(1) && accountOut - 1 >= 0 )
                 {
                     invalidInput = false;
+                    accountOut--;
                 }
                 else
                 {
@@ -246,6 +247,7 @@ namespace Bankomaten
                 if (accountIn - 1 < currentUserAccounts.GetLength(1) && accountIn - 1 >= 0)
                 {
                     invalidInput = false;
+                    accountIn--;
                 }
                 else
                 {
