@@ -279,9 +279,30 @@ namespace Bankomaten
 
         }
 
-        static void SelfMoneyTransfer(int accountOutIndex, int accountInIndex, double amount)
-        {
+        static void SelfMoneyTransfer(string user, int accountOutIndex, int accountInIndex, double amount)
+        { 
+            int index = 0;
 
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            string[,] currentUserAccounts = userAccounts[index];
+
+            double tempSum = 0;
+
+            tempSum = double.Parse(currentUserAccounts[1, accountOutIndex]) - amount;
+
+            currentUserAccounts[1, accountOutIndex] = tempSum.ToString();
+
+            tempSum = double.Parse(currentUserAccounts[1, accountInIndex]) + amount;
+
+            currentUserAccounts[1, accountInIndex] = tempSum.ToString();
         }
 
         /// <summary>
