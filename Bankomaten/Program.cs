@@ -185,6 +185,42 @@ namespace Bankomaten
 
         static void AccountMoneyTransfer(string user)
         {
+            int index = 0;
+
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            string[,] currentUserAccounts = userAccounts[index];
+
+            Write("Vilket konto vill du överföra pengar från?");
+
+            for(int i = 0; i < currentUserAccounts.GetLength(1); i++)
+            {
+                Write($"{i+1}. {currentUserAccounts[0,i]}");
+            }
+
+            bool invalidInput = true;
+            int accountOut = 0;
+
+            do
+            {
+                while(!int.TryParse(Console.ReadLine(), out accountOut))
+                {
+                    Write("Ogiltligt inmatning, skriv endast siffror.");
+                }
+
+                if(accountOut - 1 < currentUserAccounts.GetLength(1) && accountOut - 1 >= 0 )
+                {
+                    invalidInput = false;
+                }
+
+            } while (invalidInput);
 
         }
 
