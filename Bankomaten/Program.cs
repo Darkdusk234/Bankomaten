@@ -219,6 +219,10 @@ namespace Bankomaten
                 {
                     invalidInput = false;
                 }
+                else
+                {
+                    Write("Ogiltligt val, försök igen.");
+                }
 
             } while (invalidInput);
 
@@ -242,6 +246,10 @@ namespace Bankomaten
                 if (accountIn - 1 < currentUserAccounts.GetLength(1) && accountIn - 1 >= 0)
                 {
                     invalidInput = false;
+                }
+                else
+                {
+                    Write("Ogiltligt val, försök igen.");
                 }
 
             } while (invalidInput);
