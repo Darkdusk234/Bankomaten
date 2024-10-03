@@ -141,8 +141,7 @@ namespace Bankomaten
                         AccountsMenu(user);
                         break;
                     case "2":
-                        Write("Klicka enter för att komma till huvudmenyn.");
-                        Console.ReadKey();
+                        AccountMoneyTransfer(user);
                         break;
                     case "3":
                         Write("Klicka enter för att komma till huvudmenyn.");
