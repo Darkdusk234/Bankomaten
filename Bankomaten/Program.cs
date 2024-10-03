@@ -222,6 +222,29 @@ namespace Bankomaten
 
             } while (invalidInput);
 
+            Write("Vilket konto vill du överföra pengar till?");
+
+            for (int i = 0; i < currentUserAccounts.GetLength(1); i++)
+            {
+                Write($"{i + 1}. {currentUserAccounts[0, i]}");
+            }
+
+            int accountIn = 0;
+
+            do
+            {
+                while (!int.TryParse(Console.ReadLine(), out accountIn))
+                {
+                    Write("Ogiltligt inmatning, skriv endast siffror.");
+                }
+
+                if (accountIn - 1 < currentUserAccounts.GetLength(1) && accountIn - 1 >= 0)
+                {
+                    invalidInput = false;
+                }
+
+            } while (invalidInput);
+
         }
 
         /// <summary>
