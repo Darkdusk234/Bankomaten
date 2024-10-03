@@ -269,7 +269,6 @@ namespace Bankomaten
                 if(amount <= double.Parse(currentUserAccounts[1,(accountOut-1)]))
                 {
                     invalidInput = false;
-                    
                 }
                 else
                 {
@@ -277,6 +276,11 @@ namespace Bankomaten
                 }
 
             } while (invalidInput);
+
+        }
+
+        static void SelfMoneyTransfer(int accountOutIndex, int accountInIndex, double amount)
+        {
 
         }
 
