@@ -268,7 +268,7 @@ namespace Bankomaten
                     Write("Ogiltligt inmatning, skriv endast siffror.");
                 }
 
-                if(amount <= double.Parse(currentUserAccounts[1,(accountOut-1)]))
+                if(amount <= double.Parse(currentUserAccounts[1,(accountOut)]))
                 {
                     invalidInput = false;
                 }
@@ -278,6 +278,11 @@ namespace Bankomaten
                 }
 
             } while (invalidInput);
+
+            SelfMoneyTransfer(user, accountOut, accountIn, amount);
+
+            Write("Överföring klar. Tryck en tangent för att gå tillbaka till menyn.");
+            Console.ReadKey();
 
         }
 
