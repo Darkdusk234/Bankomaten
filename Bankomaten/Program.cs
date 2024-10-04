@@ -144,8 +144,7 @@ namespace Bankomaten
                         AccountMoneyTransfer(user);
                         break;
                     case "3":
-                        Write("Klicka enter för att komma till huvudmenyn.");
-                        Console.ReadKey();
+                        MoneyWithdraw(user);
                         break;
                     case "4":
                         logOut = true;
