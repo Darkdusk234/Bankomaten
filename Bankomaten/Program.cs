@@ -141,8 +141,7 @@ namespace Bankomaten
                         AccountsMenu(user);
                         break;
                     case "2":
-                        Write("Klicka enter för att komma till huvudmenyn.");
-                        Console.ReadKey();
+                        AccountMoneyTransfer(user);
                         break;
                     case "3":
                         Write("Klicka enter för att komma till huvudmenyn.");
@@ -182,6 +181,139 @@ namespace Bankomaten
             }
 
             Console.ReadKey();
+        }
+
+        static void AccountMoneyTransfer(string user)
+        {
+            int index = 0;
+
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            string[,] currentUserAccounts = userAccounts[index];
+
+            Write("Vilket konto vill du överföra pengar från?");
+
+            for(int i = 0; i < currentUserAccounts.GetLength(1); i++)
+            {
+                Write($"{i+1}. {currentUserAccounts[0,i]}");
+            }
+
+            bool invalidInput = true;
+            int accountOut = 0;
+
+            do
+            {
+                while(!int.TryParse(Console.ReadLine(), out accountOut))
+                {
+                    Write("Ogiltligt inmatning, skriv endast siffror.");
+                }
+
+                if(accountOut - 1 < currentUserAccounts.GetLength(1) && accountOut - 1 >= 0 )
+                {
+                    invalidInput = false;
+                    accountOut--;
+                }
+                else
+                {
+                    Write("Ogiltligt val, försök igen.");
+                }
+
+            } while (invalidInput);
+
+            Write("Vilket konto vill du överföra pengar till?");
+
+            for (int i = 0; i < currentUserAccounts.GetLength(1); i++)
+            {
+                Write($"{i + 1}. {currentUserAccounts[0, i]}");
+            }
+
+            int accountIn = 0;
+            invalidInput = true;
+
+            do
+            {
+                while (!int.TryParse(Console.ReadLine(), out accountIn))
+                {
+                    Write("Ogiltligt inmatning, skriv endast siffror.");
+                }
+
+                if (accountIn - 1 < currentUserAccounts.GetLength(1) && accountIn - 1 >= 0)
+                {
+                    invalidInput = false;
+                    accountIn--;
+                }
+                else
+                {
+                    Write("Ogiltligt val, försök igen.");
+                }
+
+            } while (invalidInput);
+
+            Write("Hur mycket vill du överföra?");
+
+            double amount = 0;
+            invalidInput = true;
+
+            do
+            {
+                while (!double.TryParse(Console.ReadLine(), out amount))
+                {
+                    Write("Ogiltligt inmatning, skriv endast siffror.");
+                }
+
+                if(amount <= double.Parse(currentUserAccounts[1,(accountOut)]))
+                {
+                    invalidInput = false;
+                }
+                else
+                {
+                    Write("Det finns inte tillräckligt med pengar på kontot för att överföra den summan. Försök med en lägre summa.");
+                }
+
+            } while (invalidInput);
+
+            SelfMoneyTransfer(user, accountOut, accountIn, amount);
+
+            Write("Överföring klar. Tryck en tangent för att gå tillbaka till menyn.");
+            Console.ReadKey();
+
+        }
+
+        static void SelfMoneyTransfer(string user, int accountOutIndex, int accountInIndex, double amount)
+        { 
+            int index = 0;
+
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            string[,] currentUserAccounts = userAccounts[index];
+
+            double tempSum = 0;
+
+            tempSum = double.Parse(currentUserAccounts[1, accountOutIndex]) - amount;
+
+            tempSum = Math.Truncate(tempSum * 100) / 100;
+
+            currentUserAccounts[1, accountOutIndex] = tempSum.ToString();
+
+            tempSum = double.Parse(currentUserAccounts[1, accountInIndex]) + amount;
+
+            tempSum = Math.Truncate(tempSum * 100) / 100; 
+
+            currentUserAccounts[1, accountInIndex] = tempSum.ToString();
         }
 
         /// <summary>
