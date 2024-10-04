@@ -359,6 +359,29 @@ namespace Bankomaten
                 }
 
             } while (invalidInput);
+
+            Write("Hur mycket pengar vill du ta ut?");
+
+            double amount = 0;
+            invalidInput = true;
+
+            do
+            {
+                while (!double.TryParse(Console.ReadLine(), out amount))
+                {
+                    Write("Ogiltligt inmatning, skriv endast siffror.");
+                }
+
+                if (amount <= double.Parse(currentUserAccounts[1, (account)]))
+                {
+                    invalidInput = false;
+                }
+                else
+                {
+                    Write("Det finns inte tillräckligt med pengar på kontot för att överföra den summan. Försök med en lägre summa.");
+                }
+
+            } while (invalidInput);
         }
 
         /// <summary>
