@@ -377,7 +377,7 @@ namespace Bankomaten
                 }
                 else
                 {
-                    Write("Det finns inte tillräckligt med pengar på kontot för att överföra den summan. Försök med en lägre summa.");
+                    Write("Det finns inte tillräckligt med pengar på kontot för att ta ut den summan. Försök med en lägre summa.");
                 }
 
             } while (invalidInput);
