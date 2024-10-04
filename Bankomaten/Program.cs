@@ -316,6 +316,11 @@ namespace Bankomaten
             currentUserAccounts[1, accountInIndex] = tempSum.ToString();
         }
 
+        static void MoneyWithdraw(string user)
+        {
+
+        }
+
         /// <summary>
         /// Prints out a string of text in a rainbowlike pattern
         /// </summary>
