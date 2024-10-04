@@ -144,8 +144,7 @@ namespace Bankomaten
                         AccountMoneyTransfer(user);
                         break;
                     case "3":
-                        Write("Klicka enter för att komma till huvudmenyn.");
-                        Console.ReadKey();
+                        MoneyWithdraw(user);
                         break;
                     case "4":
                         logOut = true;
@@ -314,6 +313,106 @@ namespace Bankomaten
             tempSum = Math.Truncate(tempSum * 100) / 100; 
 
             currentUserAccounts[1, accountInIndex] = tempSum.ToString();
+        }
+
+        static void MoneyWithdraw(string user)
+        {
+            int index = 0;
+
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            string[,] currentUserAccounts = userAccounts[index];
+
+            Write("Vilket konto vill du ta ut pengar från?");
+
+            for (int i = 0; i < currentUserAccounts.GetLength(1); i++)
+            {
+                Write($"{i + 1}. {currentUserAccounts[0, i]}");
+            }
+
+            int account = 0;
+            bool invalidInput = true;
+
+            do
+            {
+                while (!int.TryParse(Console.ReadLine(), out account))
+                {
+                    Write("Ogiltligt inmatning, skriv endast siffror.");
+                }
+
+                if (account - 1 < currentUserAccounts.GetLength(1) && account - 1 >= 0)
+                {
+                    invalidInput = false;
+                    account--;
+                }
+                else
+                {
+                    Write("Ogiltligt val, försök igen.");
+                }
+
+            } while (invalidInput);
+
+            Write("Hur mycket pengar vill du ta ut?");
+
+            double amount = 0;
+            invalidInput = true;
+
+            do
+            {
+                while (!double.TryParse(Console.ReadLine(), out amount))
+                {
+                    Write("Ogiltligt inmatning, skriv endast siffror.");
+                }
+
+                if (amount <= double.Parse(currentUserAccounts[1, (account)]))
+                {
+                    invalidInput = false;
+                }
+                else
+                {
+                    Write("Det finns inte tillräckligt med pengar på kontot för att ta ut den summan. Försök med en lägre summa.");
+                }
+
+            } while (invalidInput);
+
+            Write("Skriv din pinkod för att konfirmera att du vill ta ut pengarna.");
+
+            invalidInput = true;
+
+            do
+            {
+                string pinCodeInput = Console.ReadLine();
+
+                if(pinCodeInput == userPins[index])
+                {
+                    invalidInput = false;
+                }
+                else
+                {
+                    Write("Incorrect Pin försök igen.");
+                }
+
+            } while (invalidInput);
+
+            double tempSum = 0;
+
+            tempSum = double.Parse(currentUserAccounts[1, account]) - amount;
+
+            tempSum = Math.Truncate(tempSum * 100) / 100;
+
+            currentUserAccounts[1, account] = tempSum.ToString();
+
+            Write($"Din uttagning lyckades. Ditt nya saldo på kontot är {currentUserAccounts[1, account]}." +
+                $"\nTryck på en tangent för att komma tillbaka till menyn.");
+            Console.ReadKey();
+
         }
 
         /// <summary>
