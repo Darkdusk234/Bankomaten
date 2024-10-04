@@ -382,6 +382,26 @@ namespace Bankomaten
                 }
 
             } while (invalidInput);
+
+            Write("Skriv din pinkod för att konfirmera att du vill ta ut pengarna.");
+
+            invalidInput = true;
+
+            do
+            {
+                string pinCodeInput = Console.ReadLine();
+
+                if(pinCodeInput == userPins[index])
+                {
+                    invalidInput = false;
+                }
+                else
+                {
+                    Write("Incorrect Pin försök igen.");
+                }
+
+            } while (invalidInput);
+
         }
 
         /// <summary>
