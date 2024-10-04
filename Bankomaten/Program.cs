@@ -410,7 +410,7 @@ namespace Bankomaten
             currentUserAccounts[1, account] = tempSum.ToString();
 
             Write($"Din uttagning lyckades. Ditt nya saldo på kontot är {currentUserAccounts[1, account]}." +
-                $"Tryck på en tangent för att komma tillbaka till menyn.");
+                $"\nTryck på en tangent för att komma tillbaka till menyn.");
             Console.ReadKey();
 
         }
