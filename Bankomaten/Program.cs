@@ -402,6 +402,16 @@ namespace Bankomaten
 
             } while (invalidInput);
 
+            double tempSum = 0;
+
+            tempSum = double.Parse(currentUserAccounts[1, account]) - amount;
+
+            tempSum = Math.Truncate(tempSum * 100) / 100;
+
+            currentUserAccounts[1, account] = tempSum.ToString();
+
+            Write($"Din uttagning lyckades. Ditt nya saldo på kontot är {currentUserAccounts[1, account]}");
+
         }
 
         /// <summary>
