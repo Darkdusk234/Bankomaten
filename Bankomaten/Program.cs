@@ -474,6 +474,11 @@ namespace Bankomaten
 
         }
 
+        /// <summary>
+        /// Gets the array index of user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         static int UserIndex(string user)
         {
             int index = 0;
