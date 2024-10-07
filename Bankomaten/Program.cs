@@ -41,6 +41,10 @@ namespace Bankomaten
                 {
                     UserInterface(user);
                 }
+                else
+                {
+                    active = false;
+                }
             } while (active);
         }
         
