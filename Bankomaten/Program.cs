@@ -95,17 +95,7 @@ namespace Bankomaten
         static bool PinCodeInput(string user)
         {
             bool loginSuccess = false;
-            int index = 0;
-
-
-            for (int i = 0; i < userNames.Length; i++)
-            {
-                if (userNames[i].ToUpper().Equals(user.ToUpper()))
-                {
-                    index = i;
-                    break;
-                }
-            }
+            int index = UserIndex(user);
 
            for(int i = 3; i > 0; i--)
             {
@@ -190,16 +180,7 @@ namespace Bankomaten
         /// <param name="user"></param>
         static void AccountsMenu(string user)
         {
-            int index = 0;
-
-            for (int i = 0; i < userNames.Length; i++)
-            {
-                if (userNames[i].ToUpper().Equals(user.ToUpper()))
-                {
-                    index = i;
-                    break;
-                }
-            }
+            int index = UserIndex(user);
 
             string[,] currentUserAccounts = userAccounts[index];
 
@@ -220,16 +201,7 @@ namespace Bankomaten
         /// <param name="user"></param>
         static void AccountMoneyTransfer(string user)
         {
-            int index = 0;
-
-            for (int i = 0; i < userNames.Length; i++)
-            {
-                if (userNames[i].ToUpper().Equals(user.ToUpper()))
-                {
-                    index = i;
-                    break;
-                }
-            }
+            int index = UserIndex(user);
 
             string[,] currentUserAccounts = userAccounts[index];
 
@@ -334,17 +306,8 @@ namespace Bankomaten
         /// <param name="accountInIndex"></param>
         /// <param name="amount"></param>
         static void SelfMoneyTransfer(string user, int accountOutIndex, int accountInIndex, double amount)
-        { 
-            int index = 0;
-
-            for (int i = 0; i < userNames.Length; i++)
-            {
-                if (userNames[i].ToUpper().Equals(user.ToUpper()))
-                {
-                    index = i;
-                    break;
-                }
-            }
+        {
+            int index = UserIndex(user);
 
             string[,] currentUserAccounts = userAccounts[index];
 
@@ -372,16 +335,7 @@ namespace Bankomaten
         /// <param name="user"></param>
         static void MoneyWithdraw(string user)
         {
-            int index = 0;
-
-            for (int i = 0; i < userNames.Length; i++)
-            {
-                if (userNames[i].ToUpper().Equals(user.ToUpper()))
-                {
-                    index = i;
-                    break;
-                }
-            }
+            int index = UserIndex(user);
 
             string[,] currentUserAccounts = userAccounts[index];
 
@@ -472,6 +426,27 @@ namespace Bankomaten
                 $"\nTryck på en tangent för att komma tillbaka till menyn.");
             Console.ReadKey();
 
+        }
+
+        /// <summary>
+        /// Gets the array index of user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        static int UserIndex(string user)
+        {
+            int index = 0;
+
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
         }
 
         /// <summary>
