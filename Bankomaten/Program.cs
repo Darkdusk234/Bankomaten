@@ -474,6 +474,22 @@ namespace Bankomaten
 
         }
 
+        static int UserIndex(string user)
+        {
+            int index = 0;
+
+            for (int i = 0; i < userNames.Length; i++)
+            {
+                if (userNames[i].ToUpper().Equals(user.ToUpper()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
         /// <summary>
         /// Prints out a string of text in a rainbowlike pattern
         /// </summary>
