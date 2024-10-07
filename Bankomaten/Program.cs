@@ -4,6 +4,7 @@ namespace Bankomaten
 {
     internal class Program
     {
+        //Creates arrays with user account info at start of program
         static string[] userNames = ["Johan", "Lisa", "Anders", "Rebecca", "Busan"];
         static string[] userPins = ["943", "531", "231", "053", "111"];
 
@@ -21,16 +22,21 @@ namespace Bankomaten
             bool active = true;
             do
             {
+                /*Asks for the username of the user and calls on UserNameInput method to take user input and
+                checks if it is a valid username*/
                 Write("Välkommen till DRWHO Bank. \n" +
                     "Vänligen skriv ditt användarnamn.");
 
                 string user = UserNameInput();
 
+                /*Asks for the pincode of the user and calls on the PinCodeInput method to take the user input
+                and check if it is the correct code*/
                 Write($"God dag {user}. \n" +
                     "Vänligen skriv in din pinkod för att logga in.");
 
                 bool loginSuccess = PinCodeInput(user);
 
+                //If login was successful calls on UserInterface method otherwise it sets active to false to stop program.
                 if (loginSuccess)
                 {
                     UserInterface(user);
