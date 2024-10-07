@@ -48,6 +48,11 @@ namespace Bankomaten
             } while (active);
         }
         
+        /// <summary>
+        /// Takes in user input and checks if it is a valid username and loops until a valid username is given.
+        /// Returns string with username inputted.
+        /// </summary>
+        /// <returns></returns>
         static string UserNameInput()
         {
             bool validUser = false;
@@ -81,6 +86,12 @@ namespace Bankomaten
             return userNameInput;
         }
 
+        /// <summary>
+        /// Takes in user input and checks if it is the correct pincode to the username that is trying to login.
+        /// Gives three tries before sending back boolean with false value.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         static bool PinCodeInput(string user)
         {
             bool loginSuccess = false;
@@ -130,6 +141,11 @@ namespace Bankomaten
             return loginSuccess;
         }
 
+        /// <summary>
+        /// Prints out a menu with choices for the user to interact with their accounts with.
+        /// Loops until logout option is chosen.
+        /// </summary>
+        /// <param name="user"></param>
         static void UserInterface(string user)
         {
             bool logOut = false;
@@ -168,6 +184,10 @@ namespace Bankomaten
             } while (!logOut);
         }
 
+        /// <summary>
+        /// Prints out all accounts belonging to logged in user, also prints out balance of corresponding account.
+        /// </summary>
+        /// <param name="user"></param>
         static void AccountsMenu(string user)
         {
             int index = 0;
@@ -192,6 +212,11 @@ namespace Bankomaten
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Asks user what account to transfer money from and to, also asks for the amount, then calls on SelfMoneyTransfer
+        /// to transfer the amount.
+        /// </summary>
+        /// <param name="user"></param>
         static void AccountMoneyTransfer(string user)
         {
             int index = 0;
@@ -209,6 +234,7 @@ namespace Bankomaten
 
             Write("Vilket konto vill du överföra pengar från?");
 
+            //Prints what accounts are available
             for(int i = 0; i < currentUserAccounts.GetLength(1); i++)
             {
                 Write($"{i+1}. {currentUserAccounts[0,i]}");
@@ -217,6 +243,7 @@ namespace Bankomaten
             bool invalidInput = true;
             int accountOut = 0;
 
+            //Takes in user input about which account to transfer money from. Loops until valid input is given.
             do
             {
                 while(!int.TryParse(Console.ReadLine(), out accountOut))
@@ -246,6 +273,7 @@ namespace Bankomaten
             int accountIn = 0;
             invalidInput = true;
 
+            //Takes in user input about which account to transfer money to. Loops until valid input is given.
             do
             {
                 while (!int.TryParse(Console.ReadLine(), out accountIn))
@@ -270,6 +298,8 @@ namespace Bankomaten
             double amount = 0;
             invalidInput = true;
 
+            /*Takes in user input about how much money is to be transferred, and checks if there is enough money to transfer.
+            Loops until valid input is given.*/
             do
             {
                 while (!double.TryParse(Console.ReadLine(), out amount))
@@ -295,6 +325,13 @@ namespace Bankomaten
 
         }
 
+        /// <summary>
+        /// Transfers a specified amount of money between two accounts belonging to logged in user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="accountOutIndex"></param>
+        /// <param name="accountInIndex"></param>
+        /// <param name="amount"></param>
         static void SelfMoneyTransfer(string user, int accountOutIndex, int accountInIndex, double amount)
         { 
             int index = 0;
@@ -314,17 +351,24 @@ namespace Bankomaten
 
             tempSum = double.Parse(currentUserAccounts[1, accountOutIndex]) - amount;
 
+            //Rounds number so it only has 2 decimals
             tempSum = Math.Truncate(tempSum * 100) / 100;
 
             currentUserAccounts[1, accountOutIndex] = tempSum.ToString();
 
             tempSum = double.Parse(currentUserAccounts[1, accountInIndex]) + amount;
 
+            //Rounds number so it only has 2 decimals
             tempSum = Math.Truncate(tempSum * 100) / 100; 
 
             currentUserAccounts[1, accountInIndex] = tempSum.ToString();
         }
 
+        /// <summary>
+        /// Asks user what account to withdraw money from, also asks how much money to withdraw.
+        /// Then asks for pincode to confirm the withdrawl. Loops until valid input is given.
+        /// </summary>
+        /// <param name="user"></param>
         static void MoneyWithdraw(string user)
         {
             int index = 0;
@@ -350,6 +394,7 @@ namespace Bankomaten
             int account = 0;
             bool invalidInput = true;
 
+            //Takes in user input about which account to withdraw from. Loops until valid input is given.
             do
             {
                 while (!int.TryParse(Console.ReadLine(), out account))
@@ -374,6 +419,7 @@ namespace Bankomaten
             double amount = 0;
             invalidInput = true;
 
+            //Takes in user input on how much money is to be withdrawn. Loops until valid input is given.
             do
             {
                 while (!double.TryParse(Console.ReadLine(), out amount))
@@ -396,6 +442,7 @@ namespace Bankomaten
 
             invalidInput = true;
 
+            //Takes in user input of pincode and checks if it is the correct pincode of logged in user. Loops until correct input is given.
             do
             {
                 string pinCodeInput = Console.ReadLine();
@@ -415,6 +462,7 @@ namespace Bankomaten
 
             tempSum = double.Parse(currentUserAccounts[1, account]) - amount;
 
+            //Rounds number so it only has 2 decimals
             tempSum = Math.Truncate(tempSum * 100) / 100;
 
             currentUserAccounts[1, account] = tempSum.ToString();
