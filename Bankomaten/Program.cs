@@ -209,6 +209,7 @@ namespace Bankomaten
                 Write($"{i + 1}.{currentUserAccounts[1,i]}kr");
             }
 
+            Write("Tryck på en tangent för att gå tillbaka till menyn.");
             Console.ReadKey();
         }
 
