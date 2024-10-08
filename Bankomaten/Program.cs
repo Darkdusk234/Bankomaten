@@ -269,19 +269,19 @@ namespace Bankomaten
 
             Write("Hur mycket vill du överföra?");
 
-            double amount = 0;
+            decimal amount = 0;
             invalidInput = true;
 
             /*Takes in user input about how much money is to be transferred, and checks if there is enough money to transfer.
             Loops until valid input is given.*/
             do
             {
-                while (!double.TryParse(Console.ReadLine(), out amount))
+                while (!decimal.TryParse(Console.ReadLine(), out amount))
                 {
                     Write("Ogiltligt inmatning, skriv endast siffror.");
                 }
 
-                if(amount <= double.Parse(currentUserAccounts[1,(accountOut)]))
+                if(amount <= decimal.Parse(currentUserAccounts[1,(accountOut)]))
                 {
                     invalidInput = false;
                 }
@@ -306,22 +306,22 @@ namespace Bankomaten
         /// <param name="accountOutIndex"></param>
         /// <param name="accountInIndex"></param>
         /// <param name="amount"></param>
-        static void SelfMoneyTransfer(string user, int accountOutIndex, int accountInIndex, double amount)
+        static void SelfMoneyTransfer(string user, int accountOutIndex, int accountInIndex, decimal amount)
         {
             int index = UserIndex(user);
 
             string[,] currentUserAccounts = userAccounts[index];
 
-            double tempSum = 0;
+            decimal tempSum = 0;
 
-            tempSum = double.Parse(currentUserAccounts[1, accountOutIndex]) - amount;
+            tempSum = decimal.Parse(currentUserAccounts[1, accountOutIndex]) - amount;
 
             //Rounds number so it only has 2 decimals
             tempSum = Math.Truncate(tempSum * 100) / 100;
 
             currentUserAccounts[1, accountOutIndex] = tempSum.ToString();
 
-            tempSum = double.Parse(currentUserAccounts[1, accountInIndex]) + amount;
+            tempSum = decimal.Parse(currentUserAccounts[1, accountInIndex]) + amount;
 
             //Rounds number so it only has 2 decimals
             tempSum = Math.Truncate(tempSum * 100) / 100; 
@@ -372,18 +372,18 @@ namespace Bankomaten
 
             Write("Hur mycket pengar vill du ta ut?");
 
-            double amount = 0;
+            decimal amount = 0;
             invalidInput = true;
 
             //Takes in user input on how much money is to be withdrawn. Loops until valid input is given.
             do
             {
-                while (!double.TryParse(Console.ReadLine(), out amount))
+                while (!decimal.TryParse(Console.ReadLine(), out amount))
                 {
                     Write("Ogiltligt inmatning, skriv endast siffror.");
                 }
 
-                if (amount <= double.Parse(currentUserAccounts[1, (account)]))
+                if (amount <= decimal.Parse(currentUserAccounts[1, (account)]))
                 {
                     invalidInput = false;
                 }
@@ -414,9 +414,9 @@ namespace Bankomaten
 
             } while (invalidInput);
 
-            double tempSum = 0;
+            decimal tempSum = 0;
 
-            tempSum = double.Parse(currentUserAccounts[1, account]) - amount;
+            tempSum = decimal.Parse(currentUserAccounts[1, account]) - amount;
 
             //Rounds number so it only has 2 decimals
             tempSum = Math.Truncate(tempSum * 100) / 100;
