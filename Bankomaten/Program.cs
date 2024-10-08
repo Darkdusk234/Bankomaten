@@ -16,6 +16,7 @@ namespace Bankomaten
 
         static string[][,] userAccounts = new string[5][,];
 
+        //Variable of the index of current user
         static int index = 0;
 
         static void Main(string[] args)
