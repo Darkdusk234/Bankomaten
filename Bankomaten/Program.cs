@@ -16,6 +16,8 @@ namespace Bankomaten
 
         static string[][,] userAccounts = new string[5][,];
 
+        static int index = 0;
+
         static void Main(string[] args)
         {
             userAccounts = [johanAccounts, lisaAccounts, andersAccounts, rebeccaAccounts, busanAccounts];
@@ -28,6 +30,8 @@ namespace Bankomaten
                     "Vänligen skriv ditt användarnamn.");
 
                 string user = UserNameInput();
+
+                index = UserIndex(user);
 
                 /*Asks for the pincode of the user and calls on the PinCodeInput method to take the user input
                 and check if it is the correct code*/
@@ -95,7 +99,6 @@ namespace Bankomaten
         static bool PinCodeInput(string user)
         {
             bool loginSuccess = false;
-            int index = UserIndex(user);
 
            for(int i = 3; i > 0; i--)
             {
@@ -181,8 +184,6 @@ namespace Bankomaten
         /// <param name="user"></param>
         static void AccountsMenu(string user)
         {
-            int index = UserIndex(user);
-
             string[,] currentUserAccounts = userAccounts[index];
 
             for(int i = 0; i < currentUserAccounts.GetLength(1); i++)
@@ -202,8 +203,6 @@ namespace Bankomaten
         /// <param name="user"></param>
         static void AccountMoneyTransfer(string user)
         {
-            int index = UserIndex(user);
-
             string[,] currentUserAccounts = userAccounts[index];
 
             Write("Vilket konto vill du överföra pengar från?");
@@ -308,8 +307,6 @@ namespace Bankomaten
         /// <param name="amount"></param>
         static void SelfMoneyTransfer(string user, int accountOutIndex, int accountInIndex, decimal amount)
         {
-            int index = UserIndex(user);
-
             string[,] currentUserAccounts = userAccounts[index];
 
             decimal tempSum = 0;
@@ -336,8 +333,6 @@ namespace Bankomaten
         /// <param name="user"></param>
         static void MoneyWithdraw(string user)
         {
-            int index = UserIndex(user);
-
             string[,] currentUserAccounts = userAccounts[index];
 
             Write("Vilket konto vill du ta ut pengar från?");
