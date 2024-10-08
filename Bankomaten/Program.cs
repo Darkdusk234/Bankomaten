@@ -118,6 +118,7 @@ namespace Bankomaten
                 else
                 {
                     Write("Ogiltligt input. Försök igen.");
+                    i++;
                     continue;
                 }
 
