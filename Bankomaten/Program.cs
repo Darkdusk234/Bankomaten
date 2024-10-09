@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Bankomaten
+﻿namespace Bankomaten
 {
     internal class Program
     {
@@ -39,7 +37,7 @@ namespace Bankomaten
                 Write($"God dag {user}. \n" +
                     "Vänligen skriv in din pinkod för att logga in.");
 
-                bool loginSuccess = PinCodeInput(user);
+                bool loginSucess = PinCodeInput(user);
 
                 //If login was successful calls on UserInterface method otherwise it sets active to false to stop program.
                 if (loginSuccess)
