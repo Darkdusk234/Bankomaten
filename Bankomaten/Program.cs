@@ -37,7 +37,7 @@
                 Write($"God dag {user}. \n" +
                     "Vänligen skriv in din pinkod för att logga in.");
 
-                bool loginSucess = PinCodeInput(user);
+                bool loginSuccess = PinCodeInput(user);
 
                 //If login was successful calls on UserInterface method otherwise it sets active to false to stop program.
                 if (loginSuccess)
